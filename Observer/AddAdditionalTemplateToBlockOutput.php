@@ -15,12 +15,12 @@ class AddAdditionalTemplateToBlockOutput implements ObserverInterface
         if (!$block instanceof Template) {
             return;
         }
-        
+
         $additionalTemplates = $block->getData('additional_templates');
         if (empty($additionalTemplates)) {
             return;
         }
-        
+
         if (is_string($additionalTemplates)) {
             $additionalTemplates = [
                 [
@@ -29,19 +29,30 @@ class AddAdditionalTemplateToBlockOutput implements ObserverInterface
                 ]
             ];
         }
-        
+
         $transport = $observer->getTransport();
         $html = $transport->getHtml();
-        
+
         foreach ($additionalTemplates as $additionalTemplate) {
             $additionalHtml = $block->fetchView($block->getTemplateFile($additionalTemplate['template']));
-            if (isset($additionalTemplate['position']) && $additionalTemplate['position'] === 'before') {
-                $html = $additionalHtml . $html;
-            } else {
-                $html = $html . $additionalHtml;
+
+            $position = $additionalTemplate['position'] ?? 'default';
+
+            switch ($position) {
+                case 'before':
+                    $html = $additionalHtml . $html;
+                    break;
+
+                case 'nest':
+                    $html = substr_replace($html, $additionalHtml, strrpos($html, '</'), 0);
+                    break;
+
+                default:
+                    $html .= $additionalHtml;
+                    break;
             }
         }
-        
+
         $transport->setHtml($html);
     }
 }

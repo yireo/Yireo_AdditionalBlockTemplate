@@ -22,12 +22,16 @@ XML layout:
             <arguments>
                 <argument name="additional_templates" xsi:type="array">
                     <item name="example1" xsi:type="array">
-                        <item name="template" xsi:type="string">Yireo_Example::example.phtml</item>
+                        <item name="template" xsi:type="string">Yireo_Example::example-before.phtml</item>
                         <item name="position" xsi:type="string">before</item>
                     </item>
                     <item name="example2" xsi:type="array">
-                        <item name="template" xsi:type="string">Yireo_Example::example.phtml</item>
-                        <item name="position" xsi:type="string">before</item>
+                        <item name="template" xsi:type="string">Yireo_Example::example-after.phtml</item>
+                        <item name="position" xsi:type="string">after</item>
+                    </item>
+                    <item name="example3" xsi:type="array">
+                        <item name="template" xsi:type="string">Yireo_Example::example-nest.phtml</item>
+                        <item name="position" xsi:type="string">nest</item>
                     </item>
                 </argument>
             </arguments>
