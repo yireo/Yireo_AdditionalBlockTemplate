@@ -33,7 +33,8 @@ class AddAdditionalTemplateToBlockOutput implements ObserverInterface
         $transport = $observer->getTransport();
         $html = $transport->getHtml();
 
-        foreach ($additionalTemplates as $additionalTemplate) {
+        foreach ($additionalTemplates as $additionalTemplateName => $additionalTemplate) {
+            $block->setAdditionalTemplateName($additionalTemplateName);
             $additionalHtml = $block->fetchView($block->getTemplateFile($additionalTemplate['template']));
 
             $position = $additionalTemplate['position'] ?? 'default';
