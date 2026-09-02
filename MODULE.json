@@ -3,5 +3,7 @@
     "modules": [],
     "components": [],
     "config": [],
-    "tests": []
+    "tests": [],
+    "module_name": "Yireo_AdditionalBlockTemplate",
+    "composer_name": "yireo/magento2-additional-block-template"
 }
