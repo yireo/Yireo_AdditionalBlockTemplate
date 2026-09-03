@@ -1,5 +1,13 @@
 # Yireo AdditionalBlockTemplate
 
+<!-- badges.specs.start -->
+![Magento version](https://img.shields.io/badge/Magento-2.4.6%20%7C%202.4.9-orange)
+![PHP version](https://img.shields.io/badge/PHP-8.2%E2%80%938.5-777BB4)
+![License](https://img.shields.io/badge/License-OSL--3.0-blue)
+![Latest Version](https://img.shields.io/packagist/v/yireo/magento2-additional-block-template)
+<!-- badges.specs.end -->
+
+
 **A Magento 2 module to allow for additional templates to be rendered, besides the original template.**
 
 ### Overview
@@ -41,3 +49,12 @@ Using the XML layout, you can reference a certain block and add your own templat
 ```
 
 Each item name (in this case `example1`, etc) can be retreived in the block template using `$block->getAdditionalTemplateName()`.
+## Current status
+
+<!-- badges.test.start -->
+![Static Tests](https://img.shields.io/github/actions/workflow/status/yireo/Yireo_AdditionalBlockTemplate/static-tests.yml?label=static-tests)
+![Unit Tests](https://img.shields.io/github/actions/workflow/status/yireo/Yireo_AdditionalBlockTemplate/unit-tests.yml?label=unit-tests)
+![Integration Tests](https://img.shields.io/github/actions/workflow/status/yireo/Yireo_AdditionalBlockTemplate/integration-tests.yml?label=integration-tests)
+![Playwright](https://img.shields.io/github/actions/workflow/status/yireo/Yireo_AdditionalBlockTemplate/playwright.yml?label=playwright)
+![DI Compilation](https://img.shields.io/github/actions/workflow/status/yireo/Yireo_AdditionalBlockTemplate/compile.yml?label=compile)
+<!-- badges.test.end -->
