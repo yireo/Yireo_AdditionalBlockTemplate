@@ -5,6 +5,7 @@
     "type": "magento2-module",
     "require": {
         "magento/framework": "^101.0|^102.0|^103.0",
+        "magento/module-store": "^101.1",
         "php": ">=8.2 <8.6"
     },
     "license": "OSL-3.0",
