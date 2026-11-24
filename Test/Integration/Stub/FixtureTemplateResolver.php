@@ -15,7 +15,7 @@ class FixtureTemplateResolver extends Resolver
      */
     public function getTemplateFileName($template, $params = [])
     {
-        if (is_string($template) && str_starts_with($template, self::PREFIX)) {
+        if (str_starts_with($template, self::PREFIX)) {
             return dirname(__DIR__) . '/_files/' . substr($template, strlen(self::PREFIX));
         }
 

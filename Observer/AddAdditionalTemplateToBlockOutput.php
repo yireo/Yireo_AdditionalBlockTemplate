@@ -14,6 +14,12 @@ class AddAdditionalTemplateToBlockOutput implements ObserverInterface
     private const TEMPLATE_PATTERN = '#^[A-Za-z0-9]+_[A-Za-z0-9]+::[A-Za-z0-9_\-][A-Za-z0-9_\-/.]*\.phtml$#D';
     private const CLOSING_TAG_PATTERN = '#</([a-z][a-z0-9:-]*)\s*>\s*$#iD';
 
+    /**
+     * Render the additional templates of a block around its original output
+     *
+     * @param Observer $observer
+     * @return void
+     */
     public function execute(Observer $observer): void
     {
         $block = $observer->getData('block');
@@ -56,6 +62,8 @@ class AddAdditionalTemplateToBlockOutput implements ObserverInterface
     }
 
     /**
+     * Normalize the additional templates and skip invalid items
+     *
      * @param mixed $additionalTemplates
      * @return array<int|string, array{template: string, position: string, render_when_empty: bool}>
      */
@@ -103,6 +111,12 @@ class AddAdditionalTemplateToBlockOutput implements ObserverInterface
         return $validTemplates;
     }
 
+    /**
+     * Check whether a template is a valid module template identifier
+     *
+     * @param string $template
+     * @return bool
+     */
     private function isValidTemplate(string $template): bool
     {
         if (str_contains($template, '..')) {
@@ -112,6 +126,13 @@ class AddAdditionalTemplateToBlockOutput implements ObserverInterface
         return preg_match(self::TEMPLATE_PATTERN, $template) === 1;
     }
 
+    /**
+     * Insert HTML before the final closing tag, or append it when that is not safe
+     *
+     * @param string $html
+     * @param string $additionalHtml
+     * @return string
+     */
     private function nest(string $html, string $additionalHtml): string
     {
         if ($additionalHtml === '') {
