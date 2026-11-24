@@ -48,7 +48,15 @@ Using the XML layout, you can reference a certain block and add your own templat
 </page>
 ```
 
-Each item name (in this case `example1`, etc) can be retreived in the block template using `$block->getAdditionalTemplateName()`.
+Each item name (in this case `example1`, etc) can be retrieved in the additional template using `$block->getAdditionalTemplateName()`. It is reset once all additional templates are rendered. When `additional_templates` is a single string (`<argument name="additional_templates" xsi:type="string">Yireo_Example::example.phtml</argument>`), the template is rendered `after` the original template with the name `default`.
+
+Rules:
+- The `template` must be a string like `Vendor_Module::path/to/file.phtml` (no `..`). Invalid items are skipped.
+- The `position` is `before`, `after` (default) or `nest`. Any other value causes the item to be skipped.
+- All positions are relative to the output of the original template. Multiple items with the same position are rendered in the order in which they are declared.
+- With `nest`, the template is inserted before the last closing tag, but only when the original output ends with a closing tag that is not `script`, `style`, `textarea`, `title` or `template`. Otherwise it is appended (`after`).
+- When the original block renders no output (for instance because a condition in the block was not met), additional templates are skipped. Add `<item name="render_when_empty" xsi:type="boolean">true</item>` to an item to render it anyway.
+
 ## Current status
 
 <!-- badges.test.start -->
