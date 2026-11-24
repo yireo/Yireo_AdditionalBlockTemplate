@@ -8,6 +8,6 @@
     "tests": [],
     "module_name": "Yireo_AdditionalBlockTemplate",
     "composer_name": "yireo/magento2-additional-block-template",
-    "phpcs_severity": "6",
-    "phpstan_level": "3"
+    "phpcs_severity": "1",
+    "phpstan_level": "5"
 }
