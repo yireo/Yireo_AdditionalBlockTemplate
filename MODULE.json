@@ -2,12 +2,26 @@
     "sequence": [
         "Magento_Store"
     ],
-    "modules": [],
+    "modules": [
+        "Magento_Store"
+    ],
     "components": [],
     "config": [],
-    "tests": [],
+    "tests": {
+        "unit": 13,
+        "integration": 5,
+        "functional": 0
+    },
     "module_name": "Yireo_AdditionalBlockTemplate",
     "composer_name": "yireo/magento2-additional-block-template",
     "phpcs_severity": "1",
-    "phpstan_level": "5"
+    "phpstan_level": "5",
+    "php_versions": [
+        "8.1",
+        "8.2",
+        "8.3",
+        "8.4"
+    ],
+    "skip_magento_versions": [],
+    "skip_css_utils": false
 }
